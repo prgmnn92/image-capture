@@ -1,0 +1,27 @@
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#output {
+  height: 200px;
+  width: 300px;
+  border: 1px dashed black;
+}
+
+#canvas {
+  display: block;
+  max-width: 50%;
+}

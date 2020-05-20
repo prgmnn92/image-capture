@@ -33,6 +33,23 @@ let originalHeight = 0;
 
 let globalImage;
 
+let globalX = 0;
+let globalY = 0;
+
+const onMouseMove = (event) => {
+  let rect = event.target.getBoundingClientRect();
+  let x = event.clientX - rect.left; //x position within the element.
+  let y = event.clientY - rect.top; //y position within the element.
+
+  xpos.value = Math.floor(x);
+  ypos.value = Math.floor(y);
+};
+
+const onMouseUp = (event) => {
+  out.removeEventListener("mousemove", onMouseMove);
+  out.removeEventListener("mouseup", onMouseUp);
+};
+
 const startUp = () => {
   height.value = globalImage.height;
   width.value = globalImage.width;
@@ -43,6 +60,11 @@ const startUp = () => {
   colorPickerBg1.value = "#000000";
   colorPickerBg2.value = "#000000";
   colorPickerText.value = "#ffffff";
+
+  out.addEventListener("mousedown", (event) => {
+    out.addEventListener("mousemove", onMouseMove);
+    out.addEventListener("mouseup", onMouseUp);
+  });
 
   setInterval(() => {
     captureXposText.value = captureXpos.value;

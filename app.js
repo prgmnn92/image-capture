@@ -33,13 +33,16 @@ let originalHeight = 0;
 
 let globalImage;
 
-let globalX = 0;
-let globalY = 0;
+let offsetX = 0;
+let offsetY = 0;
+
+let x = 0;
+let y = 0;
 
 const onMouseMove = (event) => {
   let rect = event.target.getBoundingClientRect();
-  let x = event.clientX - rect.left; //x position within the element.
-  let y = event.clientY - rect.top; //y position within the element.
+  x = offsetX / 2 + event.clientX - rect.left; //x position within the element.
+  y = offsetY / 2 + event.clientY - rect.top; //y position within the element.
 
   xpos.value = Math.floor(x);
   ypos.value = Math.floor(y);
@@ -62,6 +65,8 @@ const startUp = () => {
   colorPickerText.value = "#ffffff";
 
   out.addEventListener("mousedown", (event) => {
+    offsetX = x - event.clientX;
+    offsetY = y - event.clientY;
     out.addEventListener("mousemove", onMouseMove);
     out.addEventListener("mouseup", onMouseUp);
   });

@@ -102,11 +102,11 @@ const startUp = () => {
   setInterval(() => {
     xposText.value = xpos.value;
     globalImage.changeXPos(xpos.value);
-  }, 100);
+  }, 10);
   setInterval(() => {
     yposText.value = ypos.value;
     globalImage.changeYPos(ypos.value);
-  }, 100);
+  }, 10);
 };
 
 out.addEventListener("dragenter", (event) => {
